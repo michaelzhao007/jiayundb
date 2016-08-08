@@ -13,10 +13,12 @@ import org.antlr.v4.runtime.UnbufferedTokenStream;
 
 import com.jiayun.internal.JiayunDB;
 import com.jiayun.internal.Table;
+import com.sun.rowset.internal.Row;
 
 public class Interpreter {
 	
 	 JiayunDB db;
+    public Object tables;
 	 
 	 public Interpreter() {
 		 this.db = new JiayunDB();
@@ -41,5 +43,12 @@ public class Interpreter {
 	    public Table getTable(String name) {
 	    	return db.getTable(name);
 	    }
+
+
+
+        public void insertInto(String string, Row row) {
+            // TODO Auto-generated method stub
+            
+        }
 
 }

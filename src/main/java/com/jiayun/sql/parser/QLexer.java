@@ -1,5 +1,6 @@
 // Generated from Q.g4 by ANTLR 4.5.3
 package com.jiayun.sql.parser;
+
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

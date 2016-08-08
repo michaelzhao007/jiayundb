@@ -8,8 +8,17 @@ public class Table<Key extends Comparable<Key>> {
 	private String primaryKey;
 	private Value fields;
 	private BTree<Key, Value> btree;
+    public int columns;
 	
-	public Table() {
+	public int getColumns() {
+        return columns;
+    }
+
+    public void setColumns(int columns) {
+        this.columns = columns;
+    }
+
+    public Table() {
 		btree = new BTree<Key, Value>();
 	}
 	
