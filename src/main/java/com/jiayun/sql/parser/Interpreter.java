@@ -30,7 +30,7 @@ public class Interpreter {
 	        QLexer lex = new QLexer(new UnbufferedCharStream(input));
 	        CommonTokenFactory tokenFactory = new CommonTokenFactory(true);
 	        lex.setTokenFactory(tokenFactory);
-	        QParser parser = new QParser(new UnbufferedTokenStream<Token>(lex), new Interpreter());
+	        QParser parser = new QParser(new InterpreterTokenStream(lex), new Interpreter());
 	        parser.program();
 	        // System.out.println(tables);
 	    }
