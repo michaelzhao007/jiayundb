@@ -38,4 +38,14 @@ public interface QListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCreate(QParser.CreateContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link QParser#insert}.
+	 * @param ctx the parse tree
+	 */
+	void enterInsert(QParser.InsertContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QParser#insert}.
+	 * @param ctx the parse tree
+	 */
+	void exitInsert(QParser.InsertContext ctx);
 }

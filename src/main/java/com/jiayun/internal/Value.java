@@ -1,14 +1,17 @@
 package com.jiayun.internal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Value {
 	private List<Tuple> values;
-	public Value(List<Tuple> list) {
-		this.values = list;
-	}
 	
-	public Value() {}
+	
+	public Value() { values = new ArrayList<Tuple>(); }
+	
+	public void addValue(String colName, String colVal) {
+	    values.add(new Tuple(colName, colVal));
+	}
 	
 	public List<Tuple> getValues() {
 		return values;

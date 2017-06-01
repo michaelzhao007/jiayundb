@@ -47,6 +47,18 @@ public class QBaseListener implements QListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCreate(QParser.CreateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInsert(QParser.InsertContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInsert(QParser.InsertContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

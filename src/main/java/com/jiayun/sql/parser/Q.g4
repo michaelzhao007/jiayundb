@@ -13,38 +13,39 @@ program
     ;
 
 stat:   create
+    | insert
     ;
 
 // START: create
 create
-    :   'create' WS+ 'table' WS+ ID WS*
+    :   WS* 'create' WS+ 'table' WS+ ID
         {interp.createTable($ID.getText());}
     ;
 // END: create
 
 // START: insert
-//insert
-//    : 'insert' WS+ 'into' WS+ ID WS+ 'set' WS+ setFields[interp.tables.get($ID.text)] ';'
-//      {interp.insertInto($ID.text, $setFields.row);}
-//    ;
+insert
+    : WS* 'insert' WS+ 'into' WS+ ID WS+ 'set' WS+ (STRING ',' STRING WS+)* ';'
+      {interp.insertInto($STRING.text, $STRING.text);}
+    ;
 // END: insert
 
 //START: expr
 //Match a simple value or do a query
 //expr returns [Object value]
- //  : ID {$value = interp.load($ID.text);}
- //  | INT {$value = $INT.int; }
+//   : INT {$value = $INT.int; }
  //  | STRING {$value= $STRING.text;}
  //  ;
 //END: expr
+
 // START: fields
-//setFields[Table t] returns [Row row]
-//@init { $row = new Row(t.columns); } // set return value
-//    :   set[$row] (',' set[$row])*
+//setFields[Table t] returns [Value val]
+//@init { $val = new Value(); } // set return value
+//    :   set[colRow]' :'set[colVal](',' set[colRow]' :'set[colVal])*
 //    ;
-//set[Row row] // pass in Row we're filling in
-//    :   ID '=' expr {row.set($ID.text, $expr.value);}
- //   ;
+//set[Value val] // pass in Row we're filling in
+//    :   ID '=' expr {val.addValue($expr.value._1, $);}
+//    ;
 // END: fields
 
 
@@ -57,8 +58,9 @@ STRING
         {setText(getText().substring(1, getText().length()-1));}
     ;
     
-WS  :     ' '
+WS  :   (  ' '
         | '\t'
         | '\r'
         | '\n'
+        ) -> channel(HIDDEN)
     ;
